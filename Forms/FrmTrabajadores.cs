@@ -15,6 +15,7 @@ using System.Security.Principal;
 using System.Security.Permissions;
 using System.Security;
 using System.Data.OleDb;
+using System.Text.RegularExpressions;
 
 namespace SistemaInventario
 {
@@ -23,6 +24,7 @@ namespace SistemaInventario
 
         private int id_trabajador = 0;
         private int fecha_seleccionada = 0;
+        private Boolean validacion = false; 
         //El validador me permite saber si un dato va a ser ingresado, o caso contrario, va a ser modificado
         private int validador = -1;
         private string dui = "";
@@ -105,6 +107,42 @@ namespace SistemaInventario
                 trabajador.Pago = float.Parse(txtpago.Text);
                 trabajador.Fecha = fechanacimiento.SelectionStart;
 
+                if (trabajador.Nombre.Equals(""))
+                {
+                    validacion = true;
+                }else if(trabajador.Dui.Equals("") || Regex.IsMatch(trabajador.Dui, "^[0-9]{8}-[0-9]{1}$") == false)
+                {
+                    validacion = true;
+                }else if (trabajador.Nit.Equals("") || Regex.IsMatch(trabajador.Nit, "^[0-9]{4}-[0-9]{6}-[0-9]{2}-[0-9]{1}$") == false)
+                {
+                    validacion = true;
+                }
+                else if (trabajador.Telefono.Equals("") || Regex.IsMatch(trabajador.Telefono, "^[0-9]{4}-[0-9]{4}$") == false)
+                {
+                    validacion = true;
+                }
+                else if (trabajador.Afp.Equals("") )
+                {
+                    validacion = true;
+                }
+                else if (trabajador.Tipo.Equals(""))
+                {
+                    validacion = true;
+                }
+                else if (trabajador.Direccion.Equals(""))
+                {
+                    validacion = true;
+                }
+                else if (trabajador.Pago <=0)
+                {
+                    validacion = true;
+                }
+
+
+                if (validacion == true) {
+                    MessageBox.Show("Error al obtener la información, favor revisar el formato de los campos solicitados.");
+                }
+                else { 
                 //Si el validador == -1 significa que un dato será INGRESADO
                 if (validador == -1)
                 {
@@ -131,6 +169,7 @@ namespace SistemaInventario
                     //Hago que el validador sea nuevamente -1 y el dui le doy un valor nulo
                     validador = -1;
                     dui = "";
+                }
                 }
 
             }
@@ -593,6 +632,11 @@ namespace SistemaInventario
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void FrmTrabajadores_Load(object sender, EventArgs e)
+        {
+            cbtipo.SelectedIndex = 0;
         }
     }
 }

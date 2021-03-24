@@ -50,7 +50,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.fechanacimiento = new System.Windows.Forms.MonthCalendar();
-            this.cbtipo = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -67,6 +66,7 @@
             this.btnexportar = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
+            this.cbtipo = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -321,22 +321,9 @@
             // 
             this.fechanacimiento.Location = new System.Drawing.Point(216, 386);
             this.fechanacimiento.Margin = new System.Windows.Forms.Padding(7);
+            this.fechanacimiento.MaxDate = new System.DateTime(2021, 3, 24, 14, 25, 5, 0);
             this.fechanacimiento.Name = "fechanacimiento";
             this.fechanacimiento.TabIndex = 9;
-            // 
-            // cbtipo
-            // 
-            this.cbtipo.Font = new System.Drawing.Font("Century Gothic", 12F);
-            this.cbtipo.FormattingEnabled = true;
-            this.cbtipo.Items.AddRange(new object[] {
-            "Trabajador",
-            "Secretari@",
-            "Auxiliar"});
-            this.cbtipo.Location = new System.Drawing.Point(216, 344);
-            this.cbtipo.Margin = new System.Windows.Forms.Padding(2);
-            this.cbtipo.Name = "cbtipo";
-            this.cbtipo.Size = new System.Drawing.Size(229, 29);
-            this.cbtipo.TabIndex = 8;
             // 
             // label8
             // 
@@ -507,6 +494,20 @@
             // 
             this.openFD.FileName = "openFileDialog1";
             // 
+            // cbtipo
+            // 
+            this.cbtipo.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.cbtipo.FormattingEnabled = true;
+            this.cbtipo.Items.AddRange(new object[] {
+            "Trabajador",
+            "Secretari@",
+            "Auxiliar"});
+            this.cbtipo.Location = new System.Drawing.Point(216, 344);
+            this.cbtipo.Margin = new System.Windows.Forms.Padding(2);
+            this.cbtipo.Name = "cbtipo";
+            this.cbtipo.Size = new System.Drawing.Size(229, 29);
+            this.cbtipo.TabIndex = 8;
+            // 
             // FrmTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,6 +522,7 @@
             this.Name = "FrmTrabajadores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Trabajadores";
+            this.Load += new System.EventHandler(this.FrmTrabajadores_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBMinimizar)).EndInit();
@@ -571,8 +573,8 @@
         private System.Windows.Forms.TextBox txtpago;
         private System.Windows.Forms.TextBox txtseguro;
         private System.Windows.Forms.TextBox txtdireccion;
-        private System.Windows.Forms.ComboBox cbtipo;
         private System.Windows.Forms.MonthCalendar fechanacimiento;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbtipo;
     }
 }
