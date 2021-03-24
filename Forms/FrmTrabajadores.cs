@@ -161,6 +161,7 @@ namespace SistemaInventario
                     txtafp.ReadOnly = false;
                     txtni.ReadOnly = false;
                     txtseguro.ReadOnly = false;
+                        
                     //Ocupo el método editar y le mando como parametro el DUI del trabajador a modificar y el objeto de tipo trabajador
                     lista.Editar(dui, trabajador);
                     //Actualizo el datagrid
